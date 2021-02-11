@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import { StyleSheet, View, TextInput, Text } from "react-native";
-import { Button } from "react-native-paper";
+import { StyleSheet, View, ScrollView } from "react-native";
+import { Button, TextInput, List } from "react-native-paper";
 import { FontAwesome } from "@expo/vector-icons";
 import Header from "../../../components/header/Header";
 const AddJob = ({ navigation }) => {
@@ -8,91 +8,135 @@ const AddJob = ({ navigation }) => {
   const goBack = () => {
     navigation.goBack();
   };
+  const [expanded, setExpanded] = React.useState(true);
+
+  const handlePress = () => setExpanded(!expanded);
   return (
     <View style={styles.container}>
       <Header screenTitle="Add Job" withEditButton />
-      <View style={styles.inputContainer}>
+      <ScrollView contentContainerStyle={{}}>
         <View
           style={{
             flex: 1,
-            justifyContent: "center",
             alignItems: "center",
-            width: "100%",
+            marginBottom: 40,
+            marginTop: 20,
           }}
         >
-          <Text>Enter Company name</Text>
           <TextInput
             style={{
-              height: "20%",
-              borderWidth: 1,
-              width: "80%",
-              borderRadius: 20,
+              height: 60,
+              width: "95%",
+              backgroundColor: "white",
             }}
+            mode="flat"
+            value={text}
+            onChangeText={(text) => setText(text)}
+            label="Job Title"
+          />
+
+          <TextInput
+            style={{
+              height: 60,
+              width: "95%",
+              backgroundColor: "white",
+            }}
+            label="Company Name"
+            mode="flat"
             value={text}
             onChangeText={(text) => setText(text)}
           />
         </View>
-        <View style={{ flex: 1, width: "100%", alignItems: "center" }}>
-          <Text>Enter Job Title</Text>
-          <TextInput
-            style={{
-              height: "20%",
-              borderWidth: 1,
-              width: "80%",
-              borderRadius: 20,
-            }}
-            value={text}
-            onChangeText={(text) => setText(text)}
-          />
+        <View style={{ flex: 1 }}>
+          <List.Accordion
+            title="Company Logo"
+            expanded={expanded}
+            onPress={handlePress}
+          >
+            <List.Item title="First item" />
+            <List.Item title="Second item" />
+          </List.Accordion>
+
+          <List.Accordion
+            title="Company Logo"
+            expanded={expanded}
+            onPress={handlePress}
+          >
+            <List.Item title="First item" />
+            <List.Item title="Second item" />
+          </List.Accordion>
+          <List.Accordion
+            title="Company Logo"
+            expanded={expanded}
+            onPress={handlePress}
+          >
+            <List.Item title="First item" />
+            <List.Item title="Second item" />
+          </List.Accordion>
+          <List.Accordion
+            title="Company Logo"
+            expanded={expanded}
+            onPress={handlePress}
+          >
+            <List.Item title="First item" />
+            <List.Item title="Second item" />
+          </List.Accordion>
+          <List.Accordion
+            title="Company Logo"
+            expanded={expanded}
+            onPress={handlePress}
+          >
+            <List.Item title="First item" />
+            <List.Item title="Second item" />
+          </List.Accordion>
         </View>
-        <View style={{ flex: 3, width: "100%", alignItems: "center" }}>
-          <Text>Enter Job Description</Text>
+        <View style={{ flex: 1, alignItems: "center" }}>
           <TextInput
             style={{
-              height: "75%",
-              borderWidth: 1,
-              width: "80%",
-              borderRadius: 20,
+              height: 100,
+              width: "95%",
+              backgroundColor: "white",
             }}
             value={text}
             onChangeText={(text) => setText(text)}
             multiline={true}
+            mode="outlined"
+          />
+
+          <TextInput
+            style={{
+              height: 100,
+              width: "95%",
+              backgroundColor: "white",
+            }}
+            value={text}
+            onChangeText={(text) => setText(text)}
+            multiline={true}
+            mode="outlined"
+          />
+
+          <TextInput
+            style={{
+              height: 100,
+              width: "95%",
+              backgroundColor: "white",
+            }}
+            value={text}
+            onChangeText={(text) => setText(text)}
+            multiline={true}
+            mode="outlined"
           />
         </View>
-        <View style={styles.buttonContainer}>
-          <Button
-            style={styles.button}
-            mode="contained"
-            color="#ff8365"
-            onPress={() => console.log("Button with adjusted color pressed")}
-          >
-            Add Job
-          </Button>
-        </View>
-      </View>
+      </ScrollView>
     </View>
   );
 };
 const styles = StyleSheet.create({
-  container: { flex: 1 },
-  header: { flex: 1, justifyContent: "center" },
-  inputContainer: { flex: 6, alignItems: "center" },
-  inputView: {
-    width: "80%",
-    backgroundColor: "#ccc",
-    borderRadius: 25,
-    height: 50,
-    marginBottom: 20,
-    justifyContent: "center",
-    padding: 20,
-    borderWidth: 1,
-  },
-  inputText: { height: 50, color: "white" },
-  buttonContainer: {
-    flex: 1,
-    alignItems: "center",
-    width: "100%",
-  },
+  container: { flex: 1, backgroundColor: "white" },
+  header: { justifyContent: "center" },
+  inputContainer1: { alignItems: "center" },
+  inputContainer2: {},
+  inputContainer3: {},
   button: { width: "60%", borderRadius: 20 },
 });
 export default AddJob;
